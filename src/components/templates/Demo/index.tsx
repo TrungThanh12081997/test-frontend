@@ -11,7 +11,7 @@ const Demo: React.FC<DemoProps> = () => {
     console.log("store", test);
     return (
         <div className='flexx'>
-            <p className='flexx-1'>ahihih</p>
+            <p className='flexx-1 text-blue'>ahihih</p>
         </div>
     );
 };
