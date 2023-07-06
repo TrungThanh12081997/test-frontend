@@ -12,7 +12,7 @@ module.exports = {
       'main': 'inear-gradielnt(to right, #d7a849, #fcf6ba, #dea833, #fbf5b7)',
       'gray': '#ABB2BF',
       'white': '#fff',
-      'vani': '#FDFAF1',
+      'vani': '#fff',
 
       // 'orange': '#ff7849',
       // 'green': '#13ce66',
