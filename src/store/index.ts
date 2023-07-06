@@ -16,6 +16,7 @@ import storage from "redux-persist/lib/storage";
 import exampleReducer from "./example";
 import rootSaga from "./rootSaga";
 import testReducer from "./test";
+import darkModeReducer from "./darkMode";
 
 const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
@@ -31,6 +32,7 @@ export const store = configureStore({
     reducer: {
         example: exampleReducer,
         test: testReducer,
+        darkMode: darkModeReducer,
         persist: persistedReducer,
     },
     middleware: (getDefaultMiddleware) =>

@@ -6,6 +6,10 @@ import './index.scss';
 
 interface <%= h.toPascalCase(name) %>Props {}
 
-const <%= h.toPascalCase(name) %>: React.FC<<%= h.toPascalCase(name) %>Props> = () => <div>Component <%= h.toPascalCase(name) %> </div>;
+const <%= h.toPascalCase(name) %>: React.FC<<%= h.toPascalCase(name) %>Props> = () => {
+    return (
+        <div>Component <%= h.toPascalCase(name) %> </div>
+    )
+};
 
 export default <%= h.toPascalCase(name) %>;

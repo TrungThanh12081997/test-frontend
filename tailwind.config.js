@@ -7,15 +7,19 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'blue': '#1fb6ff',
-      'purple': '#7e5bef',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'yellow': '#ffc82c',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      'black': '#282C33',
+      // 'main': '#aa41a4',
+      'main': 'inear-gradielnt(to right, #d7a849, #fcf6ba, #dea833, #fbf5b7)',
+      'gray': '#ABB2BF',
+      'white': '#fff',
+      'vani': '#FDFAF1',
+
+      // 'orange': '#ff7849',
+      // 'green': '#13ce66',
+      // 'yellow': '#ffc82c',
+      // 'gray-dark': '#273444',
+      // 'gray': '#8492a6',
+      // 'gray-light': '#d3dce6',
     },
     fontFamily: {
       fira: ['fira'],
