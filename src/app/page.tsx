@@ -15,32 +15,18 @@ import arrowWhite from "@/assets/img/icons/ic_arrow_white.svg";
 export default function Home() {
     const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
     const { darkMode } = darkmodeSlice;
-    const { isTablet, isMobile, isDesktop, isLargeDesktop } = useWindowResize();
-    window.addEventListener(
-        "wheel",
-        function () {
-            let lastScrollTop = 0;
-
-            const st = window.pageYOffset || document.documentElement.scrollTop;
-            if (st > lastScrollTop) {
-                console.log("case 1");
-            } else if (st < lastScrollTop) {
-                console.log("case 2");
-            }
-            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-        },
-        false,
-    );
+    const { isLargeDesktop } = useWindowResize();
 
     const wheelSlider = (event: any) => {
         const swiperEle = document.querySelector(".swiper-initialized") as any;
+
         const swiper = swiperEle?.swiper;
-        if (event?.deltaY < 0) {
-            console.log("scrolling up");
-            swiper.slidePrev();
-        } else if (event?.deltaY > 0) {
-            console.log("scrolling down");
-            swiper.slideNext();
+        if (swiperEle && swiper) {
+            if (event?.deltaY < 0) {
+                swiper.slidePrev();
+            } else if (event?.deltaY > 0) {
+                swiper.slideNext();
+            }
         }
     };
     window.addEventListener("wheel", wheelSlider);
@@ -59,44 +45,6 @@ export default function Home() {
             )}
             {isLargeDesktop && (
                 <>
-                    <div className='w-full mx-auto h-[100px] fixed z-20 bottom-[20px] flex flex-col items-center justify-center'>
-                        <div
-                            className='w-[28px] h-[28px] cursor-pointer mb-3'
-                            onClick={() => {
-                                const swiperEle = document.querySelector(
-                                    ".swiper-initialized",
-                                ) as any;
-                                const swiper = swiperEle?.swiper;
-                                swiper.slidePrev();
-                            }}
-                        >
-                            <Image
-                                src={darkMode ? arrowWhite : arrowWhite}
-                                width={0}
-                                height={0}
-                                className='w-full h-full object-cover'
-                                alt='next'
-                            />
-                        </div>
-                        <div
-                            className='w-[28px] h-[28px] cursor-pointer'
-                            onClick={() => {
-                                const swiperEle = document.querySelector(
-                                    ".swiper-initialized",
-                                ) as any;
-                                const swiper = swiperEle?.swiper as any;
-                                swiper.slideNext();
-                            }}
-                        >
-                            <Image
-                                src={darkMode ? arrowWhite : arrowWhite}
-                                width={0}
-                                height={0}
-                                className='w-full h-full object-cover'
-                                alt='next'
-                            />
-                        </div>
-                    </div>
                     <Swiper
                         direction={"vertical"}
                         slidesPerView={1}
@@ -112,7 +60,6 @@ export default function Home() {
                                 onScroll={(e) => {
                                     e.preventDefault();
                                     e.stopPropagation();
-                                    console.log("scroll");
                                 }}
                                 className='h-[100vh] flex  w-full justify-center items-center'
                             >

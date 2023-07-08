@@ -9,6 +9,7 @@ import Wrapper from "@/components/molecules/Wrapper";
 import Slider from "react-slick";
 import { Alert } from "antd";
 import { useAppSelector } from "@/store/hooks";
+import useWindowResize from "@/hooks/useWindowResize";
 
 interface ProjectsSectionProps {}
 
@@ -75,6 +76,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
             }
         });
     }, [darkMode]);
+    const { isLargeDesktop } = useWindowResize();
+
     return (
         <div className={classNames(darkMode ? "bg-black" : "bg-vani")}>
             <Wrapper>
@@ -125,7 +128,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                                                 "w-full border-b border-solid  bg-white h-[300px] flex items-center",
                                                 darkMode ? "border-white" : "border-gray",
                                             )}
-                                            data-aos='fade-down'
+                                            data-aos={isLargeDesktop ? "" : "fade-down"}
                                             data-aos-duration='500'
                                         >
                                             <Image
