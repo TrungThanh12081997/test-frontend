@@ -15,7 +15,7 @@ import arrowWhite from "@/assets/img/icons/ic_arrow_white.svg";
 export default function Home() {
     const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
     const { darkMode } = darkmodeSlice;
-    const { isLargeDesktop } = useWindowResize();
+    const resizeState = useWindowResize();
 
     const wheelSlider = (event: any) => {
         const swiperEle = document.querySelector(".swiper-initialized") as any;
@@ -23,17 +23,19 @@ export default function Home() {
         const swiper = swiperEle?.swiper;
         if (swiperEle && swiper) {
             if (event?.deltaY < 0) {
-                swiper.slidePrev();
+                swiper?.slidePrev();
             } else if (event?.deltaY > 0) {
-                swiper.slideNext();
+                swiper?.slideNext();
             }
         }
     };
-    window.addEventListener("wheel", wheelSlider);
+    if (typeof window === "object") {
+        window.addEventListener("wheel", wheelSlider);
+    }
 
     return (
         <main className={classNames("", darkMode ? "bg-black" : "bg-vani")}>
-            {!isLargeDesktop && (
+            {!resizeState?.isLargeDesktop && (
                 <>
                     <HeroSection />
                     <DeclarationSection />
@@ -43,7 +45,7 @@ export default function Home() {
                     <Footer />
                 </>
             )}
-            {isLargeDesktop && (
+            {resizeState?.isLargeDesktop && (
                 <>
                     <Swiper
                         direction={"vertical"}

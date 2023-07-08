@@ -108,7 +108,7 @@ const Footer: React.FC<FooterProps> = () => {
                                         <Link href={item.link} target='_blank'>
                                             <Image
                                                 className='h-full w-full object-contain'
-                                                src={item.img}
+                                                src={item.img || ""}
                                                 alt={item.link}
                                                 width={0}
                                                 height={0}

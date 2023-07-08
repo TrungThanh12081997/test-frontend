@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = () => {
                         )}
                     ></div>
                     <div className='flex justify-between'>
-                        <div
+                        {/* <div
                             data-aos='fade-down'
                             data-aos-duration='500'
                             className='max-w-[300px] min-w-[100px]'
@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = () => {
                                 className='w-full h-full'
                                 alt='logo'
                             />
-                        </div>
+                        </div> */}
                         <div
                             data-aos='fade-down'
                             data-aos-duration='800'
