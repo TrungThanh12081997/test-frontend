@@ -8,7 +8,6 @@ interface DemoProps {}
 
 const Demo: React.FC<DemoProps> = () => {
     const test = useSelector((store: any) => store);
-    console.log("store", test);
     return (
         <div className='flexx'>
             <p className='flexx-1 text-blue font-fira'>ahihih</p>

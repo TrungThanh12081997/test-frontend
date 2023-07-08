@@ -12,7 +12,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Wrapper>
                     <Header />
                     {children}
-                    <Footer />
                 </Wrapper>
             </body>
         </html>

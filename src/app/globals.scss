@@ -6,7 +6,10 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 @import "../assets/font/index.scss";
-// @import "antd/dist/antd.css";
+@import "aos/dist/aos.css";
+
+$gradient-cl: -webkit-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
+$gradient-cl-dark: linear-gradient(to right, #fb2039, #fb2056, #fb2039);
 
 html,
 body,
@@ -111,12 +114,22 @@ section {
 }
 body {
     line-height: 1.4;
-    // color: rgb(137, 136, 136) !important;
     font-size: 16px;
     font-weight: 500;
     overflow-x: hidden;
     letter-spacing: 0.1px;
     cursor: context-menu;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #abb2bf;
+        height: 2px;
+        border-radius: 24px;
+    }
 }
 ol,
 ul {
@@ -144,9 +157,6 @@ table {
 }
 
 // $gradient-cl: linear-gradient(to right, #d7a849, #fcf6ba, #dea833, #fbf5b7);
-
-$gradient-cl: -webkit-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
-$gradient-cl-dark: linear-gradient(to right, #fb2039, #fb2056, #fb2039);
 
 .ant-alert {
     width: max-content;
@@ -191,20 +201,6 @@ $gradient-cl-dark: linear-gradient(to right, #fb2039, #fb2056, #fb2039);
 .bg-gradient-dark {
     background-image: $gradient-cl-dark !important;
 }
-
-// .slick-prev {
-//     left: -30px;
-//     @media (max-width: 786px) {
-//         left: 0px;
-//     }
-// }
-
-// .slick-next {
-//     right: -10px;
-//     @media (max-width: 786px) {
-//         right: 15px;
-//     }
-// }
 
 .slick-prev,
 .slick-next,
@@ -251,4 +247,12 @@ $gradient-cl-dark: linear-gradient(to right, #fb2039, #fb2056, #fb2039);
             }
         }
     }
+}
+
+.swiper-slide {
+    height: 100vh !important;
+}
+
+.swiper {
+    height: 100vh;
 }

@@ -105,7 +105,11 @@ const TechSection: React.FC<TechSectionProps> = () => {
                                 className=' px-4 w-full sm:w-1/2 lg:w-1/4 mb-4'
                             >
                                 <div className='bg-white flex flex-col items-center justify-center w-full   p-8'>
-                                    <div className='cursor-pointer w-full max-w-[60px] h-[50px] relative mb-4'>
+                                    <div
+                                        data-aos='fade-down'
+                                        data-aos-duration='500'
+                                        className='cursor-pointer w-full max-w-[60px] h-[50px] relative mb-4'
+                                    >
                                         <Image
                                             className='w-full h-full object-contain'
                                             src={item.image}

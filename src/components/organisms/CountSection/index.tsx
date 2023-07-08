@@ -17,7 +17,9 @@ const CountSection: React.FC<CountSectionProps> = () => {
         { count: "3", title: "Upcoming Projects " },
     ];
     return (
-        <div className={classNames("relative ", darkMode ? "bg-gradient-dark" : "bg-gradient")}>
+        <div
+            className={classNames("relative w-full", darkMode ? "bg-gradient-dark" : "bg-gradient")}
+        >
             <Wrapper>
                 <div className='flex flex-wrap'>
                     {countData.map((item, index) => {

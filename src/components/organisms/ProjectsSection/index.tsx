@@ -5,7 +5,6 @@ import "./index.scss";
 import classNames from "classnames";
 import { dataProjects } from "../dataProjects";
 import Image from "next/image";
-import Link from "next/link";
 import Wrapper from "@/components/molecules/Wrapper";
 import Slider from "react-slick";
 import { Alert } from "antd";
@@ -13,37 +12,6 @@ import { useAppSelector } from "@/store/hooks";
 
 interface ProjectsSectionProps {}
 
-const Prev = () => {
-    const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
-    const { darkMode } = darkmodeSlice;
-
-    return (
-        <div
-            className={classNames(
-                "z-10 w-[40px] h-[40px] flex items-center justify-center rounded-[50%]",
-                darkMode ? "bg-gradient-dark text-white" : "bg-gradient text-black",
-            )}
-        >
-            {`<`}
-        </div>
-    );
-};
-const Next = () => {
-    const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
-    const { darkMode } = darkmodeSlice;
-
-    return (
-        <div
-            className={classNames(
-                "z-10 w-[40px] h-[40px] flex items-center justify-center rounded-[50%]",
-                darkMode ? "bg-gradient-dark text-white" : "bg-gradient text-black",
-            )}
-        >
-            {" "}
-            {`>`}
-        </div>
-    );
-};
 const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
     const [alert, setAlert] = useState(false);
     const handleChangeLink = (length: number) => {
@@ -63,25 +31,30 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
     }, [alert]);
     const settings = {
         className: "center",
-        // centerMode: true,
         dots: true,
         arrows: true,
         slidesToScroll: 1,
-        infinite: true,
+        infinite: false,
         focusOnSelect: true,
-        initialSlide: 4,
+        initialSlide: 3,
         speed: 800,
-        slidesToShow: 4,
+        slidesToShow: 3,
         cssEase: "ease-in-out",
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                 },
             },
             {
                 breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1,
                 },
@@ -152,6 +125,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                                                 "w-full border-b border-solid  bg-white h-[300px] flex items-center",
                                                 darkMode ? "border-white" : "border-gray",
                                             )}
+                                            data-aos='fade-down'
+                                            data-aos-duration='500'
                                         >
                                             <Image
                                                 src={item.image}

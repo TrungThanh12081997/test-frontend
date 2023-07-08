@@ -19,6 +19,15 @@ export const formRegisterSchema = yup.object({
     .matches(regexEmailAfter, "Sau @ không quá 255 kí tự"),
   // gender: yup.string().required("Vui lòng chọn giới tính"),
 });
+export const schema = yup.object().shape({
+  name: yup.string().required(" Username is required"),
+  title: yup.string().required("Title is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  message: yup
+    .string()
+    .min(10, "Description must be at least 10 characters")
+    .required("Description is required"),
+});
 // export const formRegisterSchema = yup.object().shape({
 //   invitation_code: yup.string().required("Mã thư mời là bắt buộc !"),
 // });

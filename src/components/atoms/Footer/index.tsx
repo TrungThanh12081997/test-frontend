@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import "./index.scss";
 import classNames from "classnames";
 import facebook from "@/assets/img/socials/ic_facebook.svg";
-import linkedin from "@/assets/img/socials/ic_linkedin.svg";
-import phone from "@/assets/img/socials/ic_phone.svg";
+
+import linkedin from "@/assets/img/socials/ic_linkedin.png";
+import phone from "@/assets/img/socials/ic_phone.png";
+import mail from "@/assets/img/socials/ic_mail.png";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useAppSelector } from "@/store/hooks";
@@ -17,11 +20,10 @@ const Footer: React.FC<FooterProps> = () => {
             img: phone,
             link: "tel:0822433379",
         },
-        // {
-        //     img: facebook,
-        //     link: "https://www.facebook.com/KoiL0ver2019",
-        // },
-
+        {
+            img: mail,
+            link: "tel:+84822433379",
+        },
         {
             img: linkedin,
             link: "https://www.linkedin.com/in/quan-trung-thanh-58878a227/",
@@ -32,20 +34,20 @@ const Footer: React.FC<FooterProps> = () => {
     const [mapHeight, setMapHeight] = React.useState(700);
     useEffect(() => {
         if (window.innerWidth > 576) {
-            setMapHeight(700);
+            setMapHeight(650);
         } else {
             setMapHeight(450);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <div className={classNames("relative", darkMode ? "bg-black" : "bg-vani")}>
-            <div
+        <div className={classNames("relative w-full", darkMode ? "bg-black" : "bg-vani")}>
+            {/* <div
                 className={classNames(
                     "absolute top-0 left-0 w-full h-[1px]",
                     darkMode ? "bg-gradient-dark" : "bg-gradient",
                 )}
-            ></div>
+            ></div> */}
 
             <div className='container mx-auto py-10 md:py-16 lg:py-20 xl:py-14 px-6 md:px-8 lg:px-12'>
                 <div className={classNames("flex flex-col lg:flex-row lg:justify-between lg:mb-8")}>
@@ -80,7 +82,14 @@ const Footer: React.FC<FooterProps> = () => {
                         </p>
                     </div>
                     <div className={classNames("w-full", "mb-6 md:mb-8 lg:mb-0 ", "lg:w-[40%]")}>
-                        <h3 className='text-[20px] text-white mb-2 md:mb-4'>Contact me for work</h3>
+                        <h3
+                            className={classNames(
+                                "text-[20px]  mb-2 md:mb-4",
+                                darkMode ? "text-white" : "text-black",
+                            )}
+                        >
+                            Contact me for work
+                        </h3>
                         <p className='text-gray mb-6'>
                             Please contact me follow these information.
                         </p>
@@ -98,7 +107,7 @@ const Footer: React.FC<FooterProps> = () => {
                                     >
                                         <Link href={item.link} target='_blank'>
                                             <Image
-                                                className='h-full w-full object-container'
+                                                className='h-full w-full object-contain'
                                                 src={item.img}
                                                 alt={item.link}
                                                 width={0}
@@ -111,9 +120,12 @@ const Footer: React.FC<FooterProps> = () => {
                         </div>
                     </div>
                 </div>
-                <div className=''>
+                <div
+                    // data-aos='fade-down'
+                    //  data-aos-duration='500'
+                    className=''
+                >
                     <MyMapComponent
-                        // isMarkerShown
                         googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={
