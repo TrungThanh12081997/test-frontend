@@ -33,10 +33,12 @@ const Footer: React.FC<FooterProps> = () => {
     const { darkMode } = darkmodeSlice;
     const [mapHeight, setMapHeight] = React.useState(700);
     useEffect(() => {
-        if (window.innerWidth > 576) {
-            setMapHeight(650);
-        } else {
-            setMapHeight(450);
+        if (window) {
+            if (window.innerWidth > 576) {
+                setMapHeight(650);
+            } else {
+                setMapHeight(450);
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

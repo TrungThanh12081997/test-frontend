@@ -29,7 +29,7 @@ export default function Home() {
             }
         }
     };
-    if (typeof window === "object") {
+    if (window) {
         window.addEventListener("wheel", wheelSlider);
     }
 

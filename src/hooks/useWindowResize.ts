@@ -7,7 +7,7 @@ const desktopMediaQuery = window.matchMedia('(min-width: 992px and max-width: 12
 const largeDesktopMediaQuery = window.matchMedia('(min-width: 1280px)');
 
 const useWindowResize = () => {
-    if (typeof window === "object") {
+    if (window) {
         const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
         const [isTablet, setIsTablet] = useState(window.innerWidth > 576 && window.innerWidth <= 992);
         const [isDesktop, setIsDesktop] = useState(window.innerWidth > 992 && window.innerWidth <= 1280);
