@@ -2,7 +2,7 @@
 import { Wrapper } from "@/wrapper";
 import "./globals.scss";
 import "../assets/font/index.scss";
-import Footer from "@/components/atoms/Footer";
+import "aos/dist/aos.css";
 import Header from "@/components/atoms/Header";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

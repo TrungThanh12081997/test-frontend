@@ -73,7 +73,7 @@ const TechSection: React.FC<TechSectionProps> = () => {
             title: "Figma",
         },
     ];
-    const { isLargeDesktop } = useWindowResize();
+    const resizeState = useWindowResize();
 
     return (
         <div className={classNames(darkMode ? "bg-black" : "bg-vani")}>
@@ -109,7 +109,7 @@ const TechSection: React.FC<TechSectionProps> = () => {
                             >
                                 <div className='bg-white flex flex-col items-center justify-center w-full   p-8'>
                                     <div
-                                        data-aos={isLargeDesktop ? "" : "fade-down"}
+                                        data-aos={resizeState?.isLargeDesktop ? "" : "fade-down"}
                                         data-aos-duration='500'
                                         className='cursor-pointer w-full max-w-[60px] h-[50px] relative mb-4'
                                     >

@@ -9,7 +9,7 @@ module.exports = {
     colors: {
       'black': '#282C33',
       // 'main': '#aa41a4',
-      'main': 'inear-gradielnt(to right, #d7a849, #fcf6ba, #dea833, #fbf5b7)',
+      'main': 'linear-gradielnt(to right, #d7a849, #fcf6ba, #dea833, #fbf5b7)',
       'gray': '#ABB2BF',
       'white': '#fff',
       'vani': '#fff',

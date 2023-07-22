@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useRef, useState } from "react";
@@ -9,12 +10,10 @@ import Wrapper from "@/components/molecules/Wrapper";
 import { useAppSelector } from "@/store/hooks";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import emailjs from "@emailjs/browser";
-import { Alert } from "antd";
-import icClose from "@/assets/img/icons/ic_close.png";
-import icCloseDark from "@/assets/img/icons/ic_close_dark.png";
 import { schema } from "@/utils/schemas";
+import { useDispatch } from "react-redux";
+import { toggleEmail } from "@/store/darkMode";
 
 const HeroSection = () => {
     const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
@@ -22,41 +21,17 @@ const HeroSection = () => {
     const [open, setOpen] = useState(false);
     const handleOpenModal = () => setOpen(true);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        reset,
-    } = useForm({
-        resolver: yupResolver(schema),
-    });
+    // const {
+    //     register,
+    //     handleSubmit,
+    //     formState: { errors },
+    //     reset,
+    // } = useForm({
+    //     resolver: yupResolver(schema),
+    // });
     const formRef = useRef(null);
     const [successForm, setSuccessForm] = useState(false);
     const [errorForm, setErrorForm] = useState(false);
-
-    const onSubmitForm = async () => {
-        if (formRef.current) {
-            emailjs
-                .sendForm(
-                    "service_34cmd9e",
-                    "template_iyfvjv5",
-                    formRef.current,
-                    "01tanH3pQyzgRgGr7",
-                )
-                .then(
-                    () => {
-                        setSuccessForm(true);
-                        setOpen(false);
-                        reset();
-                    },
-                    () => {
-                        setErrorForm(true);
-                        setOpen(false);
-                        reset();
-                    },
-                );
-        }
-    };
 
     useEffect(() => {
         if (successForm) {
@@ -70,10 +45,11 @@ const HeroSection = () => {
             }, 3000);
         }
     }, [errorForm, successForm]);
+    const dispatch = useDispatch();
 
     return (
         <>
-            {errorForm && (
+            {/* {errorForm && (
                 <Alert
                     message='Error'
                     description='Send email not success. Please try again later .'
@@ -88,11 +64,11 @@ const HeroSection = () => {
                     type='success'
                     showIcon
                 />
-            )}
+            )} */}
             <div
                 className={classNames(
                     darkMode ? "bg-black" : "bg-vani",
-                    "pt-[96px] lg:pt-[96px] xl:pt-[144px]",
+                    "pt-[100px] lg:pt-[100px] xl:pt-[148px]",
                 )}
             >
                 <Wrapper>
@@ -117,14 +93,14 @@ const HeroSection = () => {
                                     darkMode ? "text-white" : "text-black",
                                 )}
                             >
-                                👋 Im
+                                👋Hi, I'm
                                 <strong
                                     className={classNames(
-                                        "ml-1",
+                                        "ml-2",
                                         darkMode ? "text-gradient-dark" : "text-gradient",
                                     )}
                                 >
-                                    Quan Trung Thành
+                                    Quan Trung Thanh
                                 </strong>
                                 , Full Stack Developer
                             </h1>
@@ -140,12 +116,12 @@ const HeroSection = () => {
                                     "w-max font-normal z-10 text-white  relative",
                                     darkMode ? "bg-[transparent]" : "",
                                 )}
-                                onClick={handleOpenModal}
+                                onClick={() => dispatch(toggleEmail(true))}
                             >
                                 <div
                                     className={classNames(
                                         "w-[calc(100%_+_2px)] h-[calc(100%_+_2px)] absolute top-[-1px] left-[-1px] ",
-                                        darkMode ? "bg-gradient-dark" : "bg-gradient ",
+                                        darkMode ? "bg-gray" : "bg-gradient ",
                                     )}
                                 />
 
@@ -161,7 +137,7 @@ const HeroSection = () => {
                             </button>
                         </div>
                         <div
-                            className={classNames("w-full", "", "lg:w-[40%]")}
+                            className={classNames("w-full", "", "lg:w-[35%]")}
                             data-aos-easing='ease-out-cubic'
                             data-aos-duration='2000'
                             data-aos='flip-left'
@@ -177,7 +153,7 @@ const HeroSection = () => {
                     </div>
                 </Wrapper>
             </div>
-            {open && (
+            {/* {open && (
                 <div
                     onClick={() => {
                         setOpen(false);
@@ -302,7 +278,7 @@ const HeroSection = () => {
                                 <div
                                     className={classNames(
                                         "w-[calc(100%_+_2px)] h-[calc(100%_+_2px)] absolute top-[-1px] left-[-1px] ",
-                                        darkMode ? "bg-gradient-dark" : "bg-gradient ",
+                                        darkMode ? "bg-gray" : "bg-gradient ",
                                     )}
                                 />
 
@@ -319,7 +295,7 @@ const HeroSection = () => {
                         </form>
                     </div>
                 </div>
-            )}
+            )} */}
         </>
     );
 };

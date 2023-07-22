@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import { Alert } from "antd";
 import { useAppSelector } from "@/store/hooks";
 import useWindowResize from "@/hooks/useWindowResize";
+import useDisableSwiper from "@/hooks/useDisableSwiper";
 
 interface ProjectsSectionProps {}
 
@@ -76,8 +77,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
             }
         });
     }, [darkMode]);
-    const { isLargeDesktop } = useWindowResize();
-
+    const resizeState = useWindowResize();
+    const disableSwiper = useDisableSwiper();
     return (
         <div className={classNames(darkMode ? "bg-black" : "bg-vani")}>
             <Wrapper>
@@ -104,7 +105,19 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                         )}
                     ></div>
                 </h2>
-                <div className='mx-[-16px]'>
+                <div
+                    className='mx-[-16px]'
+                    onMouseEnter={() => {
+                        if (disableSwiper?.setDisable) {
+                            disableSwiper?.setDisable(true);
+                        }
+                    }}
+                    onMouseLeave={() => {
+                        if (disableSwiper?.setDisable) {
+                            disableSwiper?.setDisable(false);
+                        }
+                    }}
+                >
                     <Slider {...settings}>
                         {dataProjects.map((item, index) => {
                             return (
@@ -128,7 +141,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                                                 "w-full border-b border-solid  bg-white h-[300px] flex items-center",
                                                 darkMode ? "border-white" : "border-gray",
                                             )}
-                                            data-aos={isLargeDesktop ? "" : "fade-down"}
+                                            data-aos={
+                                                resizeState?.isLargeDesktop ? "" : "fade-down"
+                                            }
                                             data-aos-duration='500'
                                         >
                                             <Image
@@ -145,7 +160,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                                                 darkMode ? "border-white" : "border-gray",
                                             )}
                                         >
-                                            Tech stack :
+                                            Tech stack : {item?.techStack}
                                         </div>
                                         <div className='w-full py-4 px-2 flex flex-col'>
                                             <h2
@@ -156,7 +171,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                                             >
                                                 {item.title}
                                             </h2>
-                                            <p className='text-gray mb-4'>{item.description}</p>
+                                            {/* <p className='text-gray mb-4'>{item.description}</p> */}
                                         </div>
                                     </div>
                                 </div>

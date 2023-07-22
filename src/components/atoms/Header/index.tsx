@@ -1,12 +1,21 @@
+"use client";
 import React, { useEffect } from "react";
 import "./index.scss";
-import Wrapper from "../../molecules/Wrapper/index";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import moon from "@/assets/img/icons/ic_moon.png";
 import sun from "@/assets/img/icons/ic_sun.png";
+// import logoRowDark from "@/assets/img/new/logo_row_dark.svg";
+import logoRowDark from "@/assets/img/new/logo_test.svg";
+
+import logoRowLight from "@/assets/img/new/logo_row_light.svg";
+// import logoRowDark from "@/assets/img/new/logo_col_dark.svg";
+
+// import logoRowLight from "@/assets/img/new/logo_col_light.svg";
+
 import { toggleDarkMode } from "@/store/darkMode";
 import classNames from "classnames";
+import useWindowResize from "@/hooks/useWindowResize";
 
 interface HeaderProps {}
 
@@ -29,6 +38,7 @@ const Header: React.FC<HeaderProps> = () => {
             body?.classList.add("bg-vani");
         }
     }, [darkMode]);
+    const resizeState = useWindowResize();
 
     return (
         <div className={classNames("header fixed z-20 w-full", darkMode ? "bg-black" : "bg-vani")}>
@@ -45,21 +55,30 @@ const Header: React.FC<HeaderProps> = () => {
                         )}
                     ></div>
                     <div className='flex justify-between'>
-                        {/* <div
-                            data-aos='fade-down'
+                        <div
+                            data-aos={resizeState?.isLargeDesktop ? "" : "fade-down"}
                             data-aos-duration='500'
-                            className='max-w-[300px] min-w-[100px]'
+                            className='h-[40px]'
                         >
+                            {/* <Image
+                                src={darkMode ? logoRowDark : logoRowLight}
+                                // src={logoRowDark}
+                                width={0}
+                                height={0}
+                                className='w-full h-full'
+                                alt='logo'
+                            /> */}
                             <Image
-                                src=''
+                                src={darkMode ? logoRowDark : logoRowLight}
+                                // src={logoRowDark}
                                 width={0}
                                 height={0}
                                 className='w-full h-full'
                                 alt='logo'
                             />
-                        </div> */}
+                        </div>
                         <div
-                            data-aos='fade-down'
+                            data-aos={resizeState?.isLargeDesktop ? "" : "fade-down"}
                             data-aos-duration='800'
                             className='w-[32px] h-[32px] cursor-pointer'
                             onClick={toggleDM}

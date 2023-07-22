@@ -11,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useAppSelector } from "@/store/hooks";
 import MyMapComponent from "../GoogleMap";
+import useDisableSwiper from "@/hooks/useDisableSwiper";
 
 interface FooterProps {}
 
@@ -42,15 +43,9 @@ const Footer: React.FC<FooterProps> = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    const disableSwiper = useDisableSwiper();
     return (
         <div className={classNames("relative w-full", darkMode ? "bg-black" : "bg-vani")}>
-            {/* <div
-                className={classNames(
-                    "absolute top-0 left-0 w-full h-[1px]",
-                    darkMode ? "bg-gradient-dark" : "bg-gradient",
-                )}
-            ></div> */}
-
             <div className='container mx-auto py-10 md:py-16 lg:py-20 xl:py-14 px-6 md:px-8 lg:px-12'>
                 <div className={classNames("flex flex-col lg:flex-row lg:justify-between lg:mb-8")}>
                     <div
@@ -79,7 +74,7 @@ const Footer: React.FC<FooterProps> = () => {
                                 )}
                             >
                                 {" "}
-                                Quan Trung Thành
+                                Quan Trung Thanh
                             </strong>
                         </p>
                     </div>
@@ -122,12 +117,18 @@ const Footer: React.FC<FooterProps> = () => {
                         </div>
                     </div>
                 </div>
-                <div
-                    // data-aos='fade-down'
-                    //  data-aos-duration='500'
-                    className=''
-                >
+                <div className=''>
                     <MyMapComponent
+                        onMouseEnter={() => {
+                            if (disableSwiper?.setDisable) {
+                                disableSwiper?.setDisable(true);
+                            }
+                        }}
+                        onMouseLeave={() => {
+                            if (disableSwiper?.setDisable) {
+                                disableSwiper?.setDisable(false);
+                            }
+                        }}
                         googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={

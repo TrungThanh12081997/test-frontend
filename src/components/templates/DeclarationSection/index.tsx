@@ -16,7 +16,11 @@ const DeclarationSection: React.FC<DeclarationSectionProps> = () => {
 
     return (
         <div className={classNames(darkMode ? "bg-black" : "bg-vani")}>
-            <Wrapper>
+            <div
+                className={classNames(
+                    "container mx-auto my-8 md:my-10 lg:my-12 xl:my-14 px-6 md:px-8 lg:px-12",
+                )}
+            >
                 <div className='flex  justify-center'>
                     <div
                         className={classNames(
@@ -47,7 +51,7 @@ const DeclarationSection: React.FC<DeclarationSectionProps> = () => {
                         </div>
                     </div>
                 </div>
-            </Wrapper>
+            </div>
         </div>
     );
 };

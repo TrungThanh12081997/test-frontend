@@ -3,10 +3,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ExampleState {
   darkMode: boolean;
+  openEmail: boolean;
 }
 
 const initialState: ExampleState = {
   darkMode: true,
+  openEmail: false
 };
 const delay = async () => new Promise((resolve) => setTimeout(
   () => { resolve(true); },
@@ -25,6 +27,9 @@ export const darkModeSlice = createSlice({
     toggleDarkMode($state, action: PayloadAction<boolean>) {
       $state.darkMode = action.payload;
     },
+    toggleEmail($state, action: PayloadAction<boolean>) {
+      $state.openEmail = action.payload;
+    },
 
   },
   extraReducers(builder) {
@@ -34,6 +39,6 @@ export const darkModeSlice = createSlice({
   },
 });
 
-export const { toggleDarkMode } = darkModeSlice.actions;
+export const { toggleDarkMode, toggleEmail } = darkModeSlice.actions;
 
 export default darkModeSlice.reducer;
