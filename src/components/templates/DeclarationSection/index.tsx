@@ -29,7 +29,8 @@ const DeclarationSection: React.FC<DeclarationSectionProps> = () => {
                         )}
                     >
                         <h2 className={classNames(darkMode ? "text-white" : "text-black")}>
-                            With great power comes great electricity bill - Dr. Who
+                            I have not failed. I’ve just found 10,000 ways that won’t work - Thomas
+                            Edition
                         </h2>
                         <div className='absolute top-[-16px] left-[5px] w-[40px] h-[40px] z-10'>
                             <Image
