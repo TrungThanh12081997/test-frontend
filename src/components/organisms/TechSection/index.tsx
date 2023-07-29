@@ -5,7 +5,7 @@ import Wrapper from "@/components/molecules/Wrapper";
 import react from "@/assets/img/tech/ic_react.png";
 import next from "@/assets/img/tech/ic_next.png";
 import git from "@/assets/img/tech/ic_git.png";
-import jira from "@/assets/img/tech/ic_jira.png";
+import docker from "@/assets/img/tech/ic_docker.png";
 import figma from "@/assets/img/tech/ic_figma.png";
 import mongo from "@/assets/img/tech/ic_mongo.png";
 import mysql from "@/assets/img/tech/ic_mysql.png";
@@ -65,8 +65,8 @@ const TechSection: React.FC<TechSectionProps> = () => {
             title: "Git",
         },
         {
-            image: jira,
-            title: "Jira",
+            image: docker,
+            title: "Docker",
         },
         {
             image: figma,

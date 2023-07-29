@@ -21,12 +21,10 @@ import { useDispatch } from "react-redux";
 import icCloseDark from "@/assets/img/icons/ic_close_dark.png";
 import { toggleEmail } from "@/store/darkMode";
 import icClose from "@/assets/img/icons/ic_close.png";
-import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Home() {
     const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
     const { darkMode, openEmail } = darkmodeSlice;
-    const resizeState = useWindowResize();
 
     const wheelSlider = (event: any) => {
         const swiperEle = document.querySelector(".swiper-initialized") as any;

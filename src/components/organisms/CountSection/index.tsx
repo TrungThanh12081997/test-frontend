@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./index.scss";
 import classNames from "classnames";
 import Wrapper from "@/components/molecules/Wrapper";
@@ -53,6 +53,7 @@ const CountSection: React.FC<CountSectionProps> = () => {
     if (typeof window === "object") {
         window.addEventListener("scroll", () => checkScroll());
     }
+    const resizeState = useWindowResize();
 
     return (
         <div
@@ -68,7 +69,7 @@ const CountSection: React.FC<CountSectionProps> = () => {
                                 key={`${index * index}`}
                             >
                                 <h1 className={classNames("text-[28px] text-white mb-4 flex")}>
-                                    {countEffect ? (
+                                    {/* {countEffect ? (
                                         <>
                                             <CountUp
                                                 start={0}
@@ -80,7 +81,17 @@ const CountSection: React.FC<CountSectionProps> = () => {
                                         </>
                                     ) : (
                                         <p>{0}</p>
+                                    )} */}
+                                    {countEffect && !resizeState?.isMobile && (
+                                        <CountUp
+                                            start={0}
+                                            end={item.count}
+                                            duration={3.28}
+                                            decimals={0}
+                                        />
                                     )}
+                                    {!countEffect && !resizeState?.isMobile && <p>{0}</p>}
+                                    {resizeState?.isMobile && <p>{`${item.count} +`}</p>}
                                 </h1>
                                 <p className='text-white '>{item.title}</p>
                             </div>
